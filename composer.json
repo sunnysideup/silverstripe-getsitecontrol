@@ -1,0 +1,33 @@
+{
+    "name": "sunnysideup/getsitecontrol",
+    "type": "silverstripe-vendormodule",
+    "description": "Adds getsitecontrol.com to your website",
+    "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
+        "getsitecontrol",
+        "pop-up",
+        "messages",
+        "user-flow",
+        "get site control",
+        "popups"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Nicolaas Francken",
+            "email": "modules@sunnysideup.co.nz",
+            "role": "lead developer"
+        }
+    ],
+    "require": {
+        "silverstripe/recipe-cms": "^4.4"
+    },
+    "extra": [],
+    "autoload": {
+        "psr-4": {
+            "Sunnysideup\\GetSiteControl\\": "src/"
+        }
+    }
+}

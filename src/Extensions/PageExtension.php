@@ -23,7 +23,7 @@ class PageExtension extends SiteTreeExtension
 
     public function updateCMSFields(FieldList $fields)
     {
-        // Add get site control field only if is Publish and can Publish
+        // Add get site control field only if is Published or can Publish
         $a = ($this->getOwner()->isPublished() && $this->getOwner()->isOnDraft());
         $b = $this->getOwner()->canPublish();
         if ($a || $b) {

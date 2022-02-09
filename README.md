@@ -48,8 +48,6 @@ We recommend that you:
 
 ## Contributing
 
-
-
 We welcome any contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 ## Paid assistance

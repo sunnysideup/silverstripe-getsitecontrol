@@ -4,7 +4,9 @@ namespace Sunnysideup\GetSiteControl\Extensions;
 
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
-//todo: add ErrorPage use statement
+use SilverStripe\ErrorPage\ErrorPage;
+use SilverStripe\CMS\Model\SiteTreeExtension;
+use SilverStripe\Core\Config\Config;
 
 class PageExtension extends SiteTreeExtension
 {
@@ -23,7 +25,7 @@ class PageExtension extends SiteTreeExtension
 
     public function updateCMSFields(FieldList $fields)
     {
-        // Add get site control field only if is Published or can Publish
+        // Add get site control field only if is Publish and can Publish
         $a = ($this->getOwner()->isPublished() && $this->getOwner()->isOnDraft());
         $b = $this->getOwner()->canPublish();
         if ($a || $b) {
@@ -44,12 +46,11 @@ class PageExtension extends SiteTreeExtension
         if ($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
             return $this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride');
         }
-        $excluded = Config::inst()->get(PageExtension::class, 'page_classes_excluded_from_get_site_control');
-        foreach($excluded as $className) {
-            if($this instanceof $className) {
-                return false;
-            }
-        }
-        return true;
+
+        return in_array(
+            $this->getOwner()->ClassName, 
+            Config::inst()->get(PageExtension::class, 'page_classes_excluded_from_get_site_control'), 
+            true
+        );
     }
 }

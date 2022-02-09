@@ -24,8 +24,8 @@ class SiteConfigExtension extends DataExtension
 
                 LiteralField::create(
                     'GetSiteControlAPIHelp',
-                    'Go to: <a target='_blank' href="https://dash.getsitecontrol.com/">GetSiteControl Dashboard</a>'
-                ),
+                    "Go to: <a target='_blank' href='https://dash.getsitecontrol.com/'>GetSiteControl Dashboard</a>"
+                )
             ]
         );
 

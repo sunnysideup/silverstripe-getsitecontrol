@@ -19,6 +19,11 @@
             "name": "Nicolaas Francken",
             "email": "modules@sunnysideup.co.nz",
             "role": "lead developer"
+        },
+        {
+            "name": "Henry Salas",
+            "email": "henry.salas0106@gmail.com",
+            "role": "developer"
         }
     ],
     "require": {

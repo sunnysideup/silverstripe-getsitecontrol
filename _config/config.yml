@@ -1,5 +1,5 @@
 ---
-name: Sunny Side Up - GetSiteControl
+name: ssu_getsitecontrol
 ---
 Silverstripe\SiteConfig\SiteConfig:
   extensions:
@@ -8,7 +8,6 @@ Silverstripe\SiteConfig\SiteConfig:
 Silverstripe\CMS\Model\SiteTree:
   extensions:
     - Sunnysideup\GetSiteControl\Extensions\PageExtension
-
-SilverStripe\CMS\Controllers\ContentController:
+Page:
   extensions:
     - Sunnysideup\GetSiteControl\Extensions\PageControllerExtension

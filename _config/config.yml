@@ -8,3 +8,7 @@ Silverstripe\SiteConfig\SiteConfig:
 Silverstripe\CMS\Model\SiteTree:
   extensions:
     - Sunnysideup\GetSiteControl\Extensions\PageExtension
+
+SilverStripe\CMS\Controllers\ContentController:
+  extensions:
+    - Sunnysideup\GetSiteControl\Extensions\PageControllerExtension

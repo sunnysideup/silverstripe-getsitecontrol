@@ -4,11 +4,10 @@ namespace Sunnysideup\GetSiteControl\Extensions;
 
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
+//todo: add ErrorPage use statement
 
 class PageExtension extends SiteTreeExtension
 {
-    public $owner;
-
     private static $db = [
         'ActiveGetSiteControl' => 'Boolean(1)',
     ];
@@ -25,8 +24,8 @@ class PageExtension extends SiteTreeExtension
     public function updateCMSFields(FieldList $fields)
     {
         // Add get site control field only if is Publish and can Publish
-        $a = ($this->owner->isPublished() && $this->owner->isOnDraft());
-        $b = $this->owner->canPublish();
+        $a = ($this->getOwner()->isPublished() && $this->getOwner()->isOnDraft());
+        $b = $this->getOwner()->canPublish();
         if ($a || $b) {
             $fields->addFieldToTab(
                 'Root.GetSiteControl',
@@ -35,12 +34,17 @@ class PageExtension extends SiteTreeExtension
         }
     }
 
+    public function IsGetSiteControlPage(): bool
+    {
+        return $this->getOwner()->IsGetSiteControlEnabledOnPageLevel() && $this->getOwner()->ActiveGetSiteControl;
+    }
+
     public function IsGetSiteControlEnabledOnPageLevel(): bool
     {
         if ($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
             return $this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride');
         }
 
-        return in_array($this->getOwner()->ClassName, Config::inst()->get(GetSiteControl::class, 'page_classes_excluded_from_get_site_control'), true);
+        return in_array($this->getOwner()->ClassName, Config::inst()->get(PageExtension::class, 'page_classes_excluded_from_get_site_control'), true);
     }
 }

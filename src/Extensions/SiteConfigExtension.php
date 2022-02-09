@@ -16,7 +16,10 @@ class SiteConfigExtension extends DataExtension
         $fields->addFieldsToTab(
             'Root.GetSiteControl',
             [
-                TextField::create('GetSiteControlAPI', 'Get Site Control API Key')
+                TextField::create(
+                    'GetSiteControlAPI',
+                    'GetSiteControl API Key'
+                )
                     ->setDescription('Add just the key at the end of the link //l.getsitecontrol.com/3w0pvyd7.js, API Key is 3w0pvyd7'),
 
                 LiteralField::create(

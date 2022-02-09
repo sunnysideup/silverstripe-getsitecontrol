@@ -13,7 +13,7 @@ class PageControllerExtension extends Extension
     {  
         if (
             ! empty(SiteConfig::current_site_config()->GetSiteControlAPI) &&
-            ! $this->owner->IsGetSiteControlPage()
+            $this->owner->IsGetSiteControlPage()
         ) {
             Requirements::javascript(
                 '//l.getsitecontrol.com/' . SiteConfig::current_site_config()->GetSiteControlAPI . '.js',

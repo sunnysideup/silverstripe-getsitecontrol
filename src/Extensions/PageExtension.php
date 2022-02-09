@@ -44,7 +44,12 @@ class PageExtension extends SiteTreeExtension
         if ($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
             return $this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride');
         }
-
-        return in_array($this->getOwner()->ClassName, Config::inst()->get(PageExtension::class, 'page_classes_excluded_from_get_site_control'), true);
+        $excluded = Config::inst()->get(PageExtension::class, 'page_classes_excluded_from_get_site_control');
+        foreach($excluded as $className) {
+            if($this instanceof $className) {
+                return false;
+            }
+        }
+        return true;
     }
 }

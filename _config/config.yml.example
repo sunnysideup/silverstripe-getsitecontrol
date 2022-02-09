@@ -6,3 +6,5 @@ Sunnysideup\GetSiteControl\Extensions\PageExtension:
   page_classes_excluded_from_get_site_control:
     - 'SilverStripe\ErrorPage\ErrorPage'
     - 'MyVendor\MyApp\MyPage'
+  page_classes_included_from_get_site_control:
+    - 'MyVendor\MyApp\MyPage2'

@@ -1,9 +1,11 @@
 <?php
+
 namespace Sunnysideup\GetSiteControl\Extensions;
+
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\DataExtension;
 
 class SiteConfigExtension extends DataExtension
 {
@@ -28,6 +30,5 @@ class SiteConfigExtension extends DataExtension
                 ),
             ]
         );
-
     }
 }

@@ -4,6 +4,7 @@ namespace Sunnysideup\GetSiteControl\Extensions;
 
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\Requirements;
+
 //todo: add Extension use statement
 
 class PageControllerExtension extends Extension
@@ -28,6 +29,7 @@ class PageControllerExtension extends Extension
         if ($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
             return $this->getOwner()->IsGetSiteControlEnabledOnPageLevelOverride();
         }
+
         return
             $this->getOwner()->IsGetSiteControlEnabledOnPageLevel() &&
             $this->getOwner()->dataRecord->ActiveGetSiteControl

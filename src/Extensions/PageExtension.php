@@ -2,12 +2,12 @@
 
 namespace Sunnysideup\GetSiteControl\Extensions;
 
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Model\SiteTreeExtension;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ErrorPage\ErrorPage;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\CMS\Model\SiteTreeExtension;
-use SilverStripe\ErrorPage\ErrorPage;
-use SilverStripe\CMS\Model\RedirectorPage;
-use SilverStripe\Core\Config\Config;
 
 class PageExtension extends SiteTreeExtension
 {
@@ -54,21 +54,23 @@ class PageExtension extends SiteTreeExtension
     public function IsGetSiteControlEnabledOnPageLevel(): bool
     {
         $included = Config::inst()->get(PageExtension::class, 'page_classes_included_from_get_site_control');
-        if(! empty($included)) {
-            foreach($included as $className) {
-                if($this instanceof $className) {
+        if (! empty($included)) {
+            foreach ($included as $className) {
+                if ($this instanceof $className) {
                     return true;
                 }
             }
+
             return false;
         }
+
         $excluded = Config::inst()->get(PageExtension::class, 'page_classes_excluded_from_get_site_control');
-        foreach($excluded as $className) {
-            if($this instanceof $className) {
+        foreach ($excluded as $className) {
+            if ($this instanceof $className) {
                 return false;
             }
         }
+
         return true;
     }
-
 }

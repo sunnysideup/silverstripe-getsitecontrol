@@ -8,7 +8,7 @@ use SilverStripe\View\Requirements;
 
 class PageControllerExtension extends Extension
 {
-    public function contentcontrollerInit()
+    public function onAfterInit()
     {
         if (
             ! empty(SiteConfig::current_site_config()->GetSiteControlAPI) &&
@@ -23,4 +23,14 @@ class PageControllerExtension extends Extension
         }
     }
 
+    public function IsGetSiteControlPage(): bool
+    {
+        if ($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
+            return $this->getOwner()->IsGetSiteControlEnabledOnPageLevelOverride();
+        }
+        return
+            $this->getOwner()->IsGetSiteControlEnabledOnPageLevel() &&
+            $this->getOwner()->dataRecord->ActiveGetSiteControl
+        ;
+    }
 }

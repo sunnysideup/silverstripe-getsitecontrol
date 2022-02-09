@@ -4,7 +4,10 @@ namespace Sunnysideup\GetSiteControl\Extensions;
 
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
-//todo: add ErrorPage use statement
+use SilverStripe\CMS\Model\SiteTreeExtension;
+use SilverStripe\ErrorPage\ErrorPage;
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\Core\Config\Config;
 
 class PageExtension extends SiteTreeExtension
 {
@@ -13,12 +16,21 @@ class PageExtension extends SiteTreeExtension
     ];
 
     /**
+     * list of clasess to be explicityly included
+     * to avoid including all by default.
+     *
+     * @var array
+     */
+    private static $page_classes_included_from_get_site_control = [];
+
+    /**
      * list of clasess to be excluded.
      *
      * @var array
      */
     private static $page_classes_excluded_from_get_site_control = [
         ErrorPage::class,
+        RedirectorPage::class,
     ];
 
     public function updateCMSFields(FieldList $fields)
@@ -41,8 +53,14 @@ class PageExtension extends SiteTreeExtension
 
     public function IsGetSiteControlEnabledOnPageLevel(): bool
     {
-        if ($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
-            return $this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride');
+        $included = Config::inst()->get(PageExtension::class, 'page_classes_included_from_get_site_control');
+        if(! empty($included)) {
+            foreach($included as $className) {
+                if($this instanceof $className) {
+                    return true;
+                }
+            }
+            return false;
         }
         $excluded = Config::inst()->get(PageExtension::class, 'page_classes_excluded_from_get_site_control');
         foreach($excluded as $className) {
@@ -52,4 +70,5 @@ class PageExtension extends SiteTreeExtension
         }
         return true;
     }
+
 }

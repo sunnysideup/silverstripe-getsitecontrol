@@ -1,0 +1,8 @@
+---
+name: sunnysideup_getsitecontrol_exceptions
+---
+
+Sunnysideup\GetSiteControl\Extensions\PageExtension:
+  page_classes_excluded_from_get_site_control:
+    - 'SilverStripe\ErrorPage\ErrorPage'
+    - 'MyVendor\MyApp\MyPage'

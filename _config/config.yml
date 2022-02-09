@@ -1,11 +1,12 @@
 ---
-name: Sunny Side Up - GetSiteControl
+name: sunnysideup_getsitecontrol
 ---
+
 Silverstripe\SiteConfig\SiteConfig:
   extensions:
     - Sunnysideup\GetSiteControl\Extensions\SiteConfigExtension
 
-Silverstripe\CMS\Model\SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   extensions:
     - Sunnysideup\GetSiteControl\Extensions\PageExtension
 

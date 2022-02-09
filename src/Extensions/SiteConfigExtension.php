@@ -17,13 +17,11 @@ class SiteConfigExtension extends DataExtension
             'Root.GetSiteControl',
             [
                 TextField::create('GetSiteControlAPI', 'Get Site Control API Key')
-                    ->setDescription(
-                        'Add just the key at the end of the link //l.getsitecontrol.com/3w0pvyd7.js, API Key is 3w0pvyd7'
-                    ),
+                    ->setDescription('Add just the key at the end of the link //l.getsitecontrol.com/3w0pvyd7.js, API Key is 3w0pvyd7'),
 
                 LiteralField::create(
                     'GetSiteControlAPIHelp',
-                    '<a target='_blank' href='https://dash.getsitecontrol.com/'>Get site control Dashboard</a>'
+                    'Go to: <a target='_blank' href="https://dash.getsitecontrol.com/">GetSiteControl Dashboard</a>'
                 ),
             ]
         );

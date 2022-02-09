@@ -18,7 +18,7 @@ class SiteConfigExtension extends DataExtension
             [
                 TextField::create('GetSiteControlAPI', 'Get Site Control API Key')
                     ->setDescription(
-                        'Add just the key at the end of the link //l.getsitecontrol.com/3w0pvyd7.js, API Key is 3w0pvyd7')
+                        'Add just the key at the end of the link //l.getsitecontrol.com/3w0pvyd7.js, API Key is 3w0pvyd7'
                     ),
 
                 LiteralField::create(

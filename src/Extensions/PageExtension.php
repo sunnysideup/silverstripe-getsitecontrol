@@ -1,18 +1,21 @@
 <?php
+
 namespace Sunnysideup\GetSiteControl\Extensions;
 
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\FieldList;
 
 class PageExtension extends SiteTreeExtension
 {
+    public $owner;
+
     private static $db = [
-        'ActiveGetSiteControl' => 'Boolean(1)'
+        'ActiveGetSiteControl' => 'Boolean(1)',
     ];
 
     /**
-     * list of clasess to be excluded
+     * list of clasess to be excluded.
+     *
      * @var array
      */
     private static $page_classes_excluded_from_get_site_control = [
@@ -32,12 +35,12 @@ class PageExtension extends SiteTreeExtension
         }
     }
 
-    public function IsGetSiteControlEnabledOnPageLevel() : bool
+    public function IsGetSiteControlEnabledOnPageLevel(): bool
     {
-        if($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
+        if ($this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride')) {
             return $this->getOwner()->hasMethod('IsGetSiteControlEnabledOnPageLevelOverride');
         }
-        return in_array($this->getOwner()->ClassName, Config::inst()->get(GetSiteControl::class, 'page_classes_excluded_from_get_site_control'));
-    }
 
+        return in_array($this->getOwner()->ClassName, Config::inst()->get(GetSiteControl::class, 'page_classes_excluded_from_get_site_control'), true);
+    }
 }

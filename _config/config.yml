@@ -1,3 +1,9 @@
-SilverStripe\Core\Injector\Injector:
-  EmailAddress:
-    class: Sunnysideup\EmailAddressDatabaseField\Model\Fieldtypes\EmailAddress
+---
+name: Sunny Side Up - GetSiteControl
+---
+Silverstripe\SiteConfig\SiteConfig:
+  extensions:
+    - GetSiteControlExtension
+Silverstripe\CMS\Model\SiteTree:
+  extensions:
+    - GetSiteControl

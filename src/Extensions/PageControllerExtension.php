@@ -1,12 +1,12 @@
 <?php
-namespace Sunnysideup\GetSiteControl;
+namespace Sunnysideup\GetSiteControl\Extensions;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\View\Requirements;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\SiteConfig\SiteConfig;
 
-class GetSiteControlController extends DataExtension
+class PageControllerExtension extends Extension
 {
 
     public function contentcontrollerInit()
@@ -16,9 +16,9 @@ class GetSiteControlController extends DataExtension
             $this->IsGetSiteControlPage()
         ) {
             Requirements::javascript(
-                "//l.getsitecontrol.com/".SiteConfig::current_site_config()->GetSiteControlAPI.".js",
+                '//l.getsitecontrol.com/'.SiteConfig::current_site_config()->GetSiteControlAPI.'.js',
                 [
-                    "async" => true
+                    'async' => true
                 ]
             );
         }

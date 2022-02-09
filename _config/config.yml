@@ -3,7 +3,8 @@ name: Sunny Side Up - GetSiteControl
 ---
 Silverstripe\SiteConfig\SiteConfig:
   extensions:
-    - GetSiteControlExtension
+    - Sunnysideup\GetSiteControl\Extensions\SiteConfigExtension
+
 Silverstripe\CMS\Model\SiteTree:
   extensions:
-    - GetSiteControl
+    - Sunnysideup\GetSiteControl\Extensions\PageExtension

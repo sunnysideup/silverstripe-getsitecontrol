@@ -4,6 +4,8 @@ namespace Sunnysideup\GetSiteControl\Extensions;
 
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\Requirements;
+use SilverStripe\Core\Extension;
+
 
 //todo: add Extension use statement
 
